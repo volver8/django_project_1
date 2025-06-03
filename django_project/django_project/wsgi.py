@@ -1,7 +1,7 @@
 import os
 
-from django.core.wsgi import get_wsgi_application
 from django.conf.global_settings import DEBUG
+from django.core.wsgi import get_wsgi_application
 
 
 if DEBUG:

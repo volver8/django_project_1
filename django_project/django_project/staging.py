@@ -35,8 +35,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.security.SecurityMiddleware",  # Компоненты, которые выполняются во время обработки запросов и ответов,
+    "django.contrib.sessions.middleware.SessionMiddleware",  # позволяя глобально изменять или влиять на этот процесс
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -96,10 +96,12 @@ LANGUAGE_CODE = "ru-ru"
 
 TIME_ZONE = "Europe/Moscow"
 
-USE_I18N = True
+USE_I18N = True  # флаг интернационализации
 
-USE_TZ = True
+USE_TZ = True  # флаг интернационализации
 
 STATIC_URL = "static/"
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+DEFAULT_AUTO_FIELD = (
+    "django.db.models.BigAutoField"  # определет каким типом будет поле первичного ключа
+)

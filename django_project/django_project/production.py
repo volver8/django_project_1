@@ -1,105 +1,50 @@
-import os
-from pathlib import Path
+from base import (
+    BASE_DIR,
+    SECRET_KEY,
+    ALLOWED_HOSTS,
+    INSTALLED_APPS,
+    MIDDLEWARE,
+    ROOT_URLCONF,
+    TEMPLATES,
+    WSGI_APPLICATION,
+    DATABASES,
+    AUTH_PASSWORD_VALIDATORS,
+    LANGUAGE_CODE,
+    TIME_ZONE,
+    STATIC_URL,
+    USE_I18N,
+    USE_TZ,
+)
 
-from dotenv import load_dotenv
 
-
-load_dotenv()
-
-
-django_token = os.getenv("DJANGO_SECRET_KEY")
-db_user = os.getenv("DB_USER")
-db_password = os.getenv("DB_PASSWORD")
-
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-SECRET_KEY = django_token
-DB_PASSWORD = db_password
-DB_USER = db_user
-
+BASE_DIR
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+SECRET_KEY
 
+ALLOWED_HOSTS
 
-INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "debug_toolbar",
-]
+INSTALLED_APPS
 
-MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
+MIDDLEWARE
 
-ROOT_URLCONF = "django_project.urls"
+ROOT_URLCONF
 
-TEMPLATES = [
-    {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
-            ],
-        },
-    },
-]
+TEMPLATES
 
-WSGI_APPLICATION = "django_project.wsgi.application"
+WSGI_APPLICATION
 
+DATABASES
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "db_postgresql",
-        "USER": DB_USER,
-        "PASSWORD": DB_PASSWORD,
-        "HOST": "localhost",
-        "PORT": "5432",
-    }
-}
+AUTH_PASSWORD_VALIDATORS
 
+LANGUAGE_CODE
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
+TIME_ZONE
 
+USE_I18N
 
-LANGUAGE_CODE = "ru-ru"
+USE_TZ
 
-TIME_ZONE = "Europe/Moscow"
-
-USE_I18N = True
-
-USE_TZ = True
-
-STATIC_URL = "static/"
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+STATIC_URL

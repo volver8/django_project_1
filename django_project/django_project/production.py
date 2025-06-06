@@ -1,8 +1,10 @@
-from base import (
+from .base import (
     ALLOWED_HOSTS,
     AUTH_PASSWORD_VALIDATORS,
+    AUTH_USER_MODEL,
     BASE_DIR,
     DATABASES,
+    DEFAULT_AUTO_FIELD,
     INSTALLED_APPS,
     LANGUAGE_CODE,
     MIDDLEWARE,
@@ -18,8 +20,6 @@ from base import (
 
 
 BASE_DIR
-
-DEBUG = False
 
 SECRET_KEY
 
@@ -48,3 +48,7 @@ USE_I18N
 USE_TZ
 
 STATIC_URL
+
+DEFAULT_AUTO_FIELD
+
+AUTH_USER_MODEL

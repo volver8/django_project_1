@@ -1,6 +1,7 @@
-from base import (
+from .base import (
     ALLOWED_HOSTS,
     AUTH_PASSWORD_VALIDATORS,
+    AUTH_USER_MODEL,
     BASE_DIR,
     DATABASES,
     DEFAULT_AUTO_FIELD,
@@ -20,15 +21,17 @@ from base import (
 
 BASE_DIR
 
-DEBUG = False
-
 SECRET_KEY
 
 ALLOWED_HOSTS
 
-INSTALLED_APPS
+INSTALLED_APPS.append("debug_toolbar")
 
-MIDDLEWARE
+MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 ROOT_URLCONF
 
@@ -51,3 +54,5 @@ USE_TZ
 STATIC_URL
 
 DEFAULT_AUTO_FIELD
+
+AUTH_USER_MODEL

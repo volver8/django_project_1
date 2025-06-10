@@ -1,7 +1,8 @@
 import os
 
-from .base import DEBUG
 from django.core.wsgi import get_wsgi_application
+
+from .base import DEBUG
 
 
 if DEBUG:

@@ -1,7 +1,8 @@
 import os
 
-from .base import DEBUG
 from django.core.asgi import get_asgi_application
+
+from .base import DEBUG
 
 
 if DEBUG:

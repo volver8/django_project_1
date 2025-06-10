@@ -1,7 +1,14 @@
+import os
+
 from django.contrib import admin
 from django.urls import include, path
+from dotenv import load_dotenv
 
-from .base import DEBUG
+
+load_dotenv()
+
+
+DEBUG = bool(os.getenv("DEBUG"))
 
 
 urlpatterns = [

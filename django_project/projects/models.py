@@ -54,13 +54,13 @@ class Priority(models.Model):
 
 
 class Tag(models.Model):
-    """Модель для тегов"""
+    """Модель для меток"""
 
-    name = models.CharField("Название тэга", max_length=MAX_LEN)
+    name = models.CharField("Название метки", max_length=MAX_LEN)
 
     class Meta:
-        verbose_name = "тэг"
-        verbose_name_plural = "Тэги"
+        verbose_name = "метка"
+        verbose_name_plural = "Метки"
 
     def __str__(self):
         return self.name

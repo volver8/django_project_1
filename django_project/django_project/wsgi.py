@@ -1,8 +1,12 @@
 import os
 
 from django.core.wsgi import get_wsgi_application
+from dotenv import load_dotenv
 
-from .base import DEBUG
+
+load_dotenv()
+
+DEBUG = bool(os.getenv("DEBUG"))
 
 
 if DEBUG:

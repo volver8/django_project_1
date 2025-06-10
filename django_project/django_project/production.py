@@ -1,54 +1,134 @@
-from .base import (
-    ALLOWED_HOSTS,
-    AUTH_PASSWORD_VALIDATORS,
-    AUTH_USER_MODEL,
-    BASE_DIR,
-    DATABASES,
-    DEFAULT_AUTO_FIELD,
-    INSTALLED_APPS,
-    LANGUAGE_CODE,
-    MIDDLEWARE,
-    ROOT_URLCONF,
-    SECRET_KEY,
-    STATIC_URL,
-    TEMPLATES,
-    TIME_ZONE,
-    USE_I18N,
-    USE_TZ,
-    WSGI_APPLICATION,
-)
+import os
+from datetime import timedelta
+from pathlib import Path
+
+from dotenv import load_dotenv
 
 
-BASE_DIR
+load_dotenv()
 
-SECRET_KEY
 
-ALLOWED_HOSTS
+django_token = os.getenv("DJANGO_SECRET_KEY")
+db_user = os.getenv("DB_USER")
+db_password = os.getenv("DB_PASSWORD")
+debug = os.getenv("DEBUG")
 
-INSTALLED_APPS
 
-MIDDLEWARE
+BASE_DIR = Path(__file__).resolve().parent.parent
 
-ROOT_URLCONF
+SECRET_KEY = django_token
+DB_PASSWORD = db_password
+DB_USER = db_user
 
-TEMPLATES
 
-WSGI_APPLICATION
+DEBUG = debug
 
-DATABASES
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
-AUTH_PASSWORD_VALIDATORS
 
-LANGUAGE_CODE
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "users.apps.UsersConfig",
+    "projects.apps.ProjectsConfig",
+    "debug_toolbar",
+    "rest_framework",
+    "djoser",
+]
 
-TIME_ZONE
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+]
 
-USE_I18N
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
-USE_TZ
+ROOT_URLCONF = "django_project.urls"
 
-STATIC_URL
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+            ],
+        },
+    },
+]
 
-DEFAULT_AUTO_FIELD
+WSGI_APPLICATION = "django_project.wsgi.application"
 
-AUTH_USER_MODEL
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "postgresql_db",
+        "USER": DB_USER,
+        "PASSWORD": DB_PASSWORD,
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
+}
+
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    },
+]
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+}
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
+
+
+LANGUAGE_CODE = "ru-ru"
+
+TIME_ZONE = "Europe/Moscow"
+
+USE_I18N = True
+
+USE_TZ = True
+
+STATIC_URL = "static/"
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "users.MyUser"

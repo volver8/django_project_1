@@ -90,6 +90,10 @@ class KanbanBoard(CreatedAt):
         related_name="kanbanboards",
     )
 
+    class Meta:
+        verbose_name = "доска"
+        verbose_name_plural = "Доски"
+
     def __str__(self):
         return self.name
 
@@ -130,6 +134,10 @@ class Task(TaskSubTask):
         related_name="tasks",
     )
 
+    class Meta:
+        verbose_name = "задача"
+        verbose_name_plural = "Задачи"
+
     def __str__(self):
         return self.name
 
@@ -161,6 +169,10 @@ class SubTask(TaskSubTask):
         blank=False,
         related_name="subtasks",
     )
+
+    class Meta:
+        verbose_name = "подзадача"
+        verbose_name_plural = "Подзадачи"
 
     def __str__(self):
         return self.name

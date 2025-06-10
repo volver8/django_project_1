@@ -1,6 +1,6 @@
 import os
 
-from django.conf.global_settings import DEBUG
+from .base import DEBUG
 from django.core.asgi import get_asgi_application
 
 

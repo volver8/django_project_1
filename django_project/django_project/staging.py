@@ -4,10 +4,10 @@ from .base import (
     AUTH_USER_MODEL,
     BASE_DIR,
     DATABASES,
-    DEFAULT_AUTO_FIELD,
     INSTALLED_APPS,
-    LANGUAGE_CODE,
     MIDDLEWARE,
+    DEFAULT_AUTO_FIELD,
+    LANGUAGE_CODE,
     ROOT_URLCONF,
     SECRET_KEY,
     STATIC_URL,
@@ -25,13 +25,9 @@ SECRET_KEY
 
 ALLOWED_HOSTS
 
-INSTALLED_APPS.append("debug_toolbar")
+INSTALLED_APPS
 
-MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
-
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
+MIDDLEWARE
 
 ROOT_URLCONF
 

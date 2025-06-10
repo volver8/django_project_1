@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from datetime import timedelta
 
 from dotenv import load_dotenv
 
@@ -33,6 +34,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "users.apps.UsersConfig",
     "projects.apps.ProjectsConfig",
+    "debug_toolbar",
+    "rest_framework",
+    "djoser",
 ]
 
 MIDDLEWARE = [
@@ -43,6 +47,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 ROOT_URLCONF = "django_project.urls"
@@ -68,7 +77,7 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "db_postgresql",
+        "NAME": "postgresql_db",
         "USER": DB_USER,
         "PASSWORD": DB_PASSWORD,
         "HOST": "localhost",
@@ -91,6 +100,23 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+}
+
+
+SIMPLE_JWT = {
+    # Устанавливаем срок жизни токена
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+}
 
 
 LANGUAGE_CODE = "ru-ru"
